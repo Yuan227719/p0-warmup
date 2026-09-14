@@ -7,14 +7,14 @@ def convert(temp):
         except ValueError:
             raise ValueError(f"无法解析: {temp}")
         fah = value*9/5+32
-        return fah
+        return f"{fah:.1f}F"
     elif temp[-1].upper() == 'F':
         try:
             value = float(temp[:-1])
         except ValueError:
             raise ValueError(f"无法解析: {temp}")
         cel = (value-32)*5/9
-        return cel
+        return f"{cel:.1f}C"
     else:
         raise ValueError(f"无法解析: {temp}")
 

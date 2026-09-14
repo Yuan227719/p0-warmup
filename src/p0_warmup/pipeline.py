@@ -39,8 +39,9 @@ def load_rows(path,group_col,metric_col):
 
 
         try:
-            raw_dict[group_col]=value.split(',')[group_index]
-            raw_dict[metric_col]=float(value.split(',')[metric_index])
+            parts = value.split(',')
+            raw_dict[group_col]=parts[group_index]
+            raw_dict[metric_col]=float(parts[metric_index])
         except ValueError as e:
             print('数据格式不对',e) 
             continue

@@ -1,5 +1,5 @@
 import argparse
-from csv_groupby import load_rows,aggregate,report
+from .pipeline import load_rows,aggregate,report
 
 parser = argparse.ArgumentParser(description="CSV 分组统计工具")
 parser.add_argument("--input", required=True, help="CSV 文件路径")
