@@ -1,4 +1,5 @@
-def aggregate(rows,group_col,metric_col):
+
+def aggregate(rows:list[dict[str,str|float]],group_col:str,metric_col:str) -> dict[str,dict[str,float]]:
     stats = {}
     for item in rows:
         group=item[group_col]
@@ -10,7 +11,7 @@ def aggregate(rows,group_col,metric_col):
             stats[group] = {metric_col: metric, "count": 1}
     return stats
 
-def load_rows(path,group_col,metric_col):
+def load_rows(path:str,group_col:str,metric_col:str) -> list[dict[str,str|float]]:
 
     try:
         with open(path,'r') as f:
@@ -33,9 +34,9 @@ def load_rows(path,group_col,metric_col):
         print(f"错误：列 {group_col} 不存在，可用列：{headers}")
         return []
 
-    load_rows=[]   
+    load_rows = []   
     for value in raw_list[1:]:
-        raw_dict = dict()
+        raw_dict= dict()
 
 
         try:
@@ -52,7 +53,7 @@ def load_rows(path,group_col,metric_col):
 
     return load_rows
 
-def report(stats,metric_col):
+def report(stats:dict[str,dict[str,float]],metric_col:str) -> None:
     for city,info in stats.items():
         avg = round(info[metric_col]/info['count'],1)
         print(f"{city} 数量={info['count']} 均值={avg}")
