@@ -1,0 +1,14 @@
+src/p0_warmup/pipeline.py
+  h_e2c8b9bc912929 1-2,14,56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "45088e79637d27c4de94c871f33f2598e85e4258",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
