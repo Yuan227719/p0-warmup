@@ -1,0 +1,20 @@
+src/p0_warmup/cli.py
+  h_e2c8b9bc912929 2-3,6-9,16-19,21-22
+src/p0_warmup/sql_to_pandas.py
+  h_e2c8b9bc912929 1-38
+exercise/sql_to_dataframe.py
+  h_e2c8b9bc912929 1-15
+src/p0_warmup/pipeline_pandas.py
+  h_e2c8b9bc912929 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "1bc169a40a8f98f33e4a771aa1db9692caa01e9a",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
