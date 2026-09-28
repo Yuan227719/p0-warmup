@@ -1,0 +1,20 @@
+src/p0_warmup/pipeline_pandas.py
+  h_e2c8b9bc912929 5,15,34
+src/p0_warmup/tests/test_pipeline_pandas.py
+  h_e2c8b9bc912929 1-14
+src/p0_warmup/format_compare.py
+  h_e2c8b9bc912929 1-24
+src/p0_warmup/cli.py
+  h_e2c8b9bc912929 5,19,21,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "6058acad3b0af0ef06570695d6c2ba37fd5214dc",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
