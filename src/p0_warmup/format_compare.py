@@ -12,13 +12,12 @@ print(csv_size)
 parquet_size = os.path.getsize('demo.parquet')
 print(parquet_size)
 # 数字二：读取耗时（time 计时，read_csv vs read_parquet 各跑一遍）
-pd.read_csv('demo.csv')
-pd.read_parquet('parquet.csv')
+t0=time.perf_counter(); 
+pd.read_csv("demo.csv"); 
+print(time.perf_counter()-t0)
+t1=time.perf_counter(); 
+pd.read_parquet('demo.parquet')
+print(time.perf_counter()-t1)
 
 
-with open('demo.csv') as file_csv:
-    file_csv.read()
-
-with open('parquet.csv') as parquet_csv:
-    parquet_csv.read()
 

@@ -1,3 +1,20 @@
+"""
+pipeline_pandas —— 手写管道的 pandas 平行实现（双跑对照版）
+
+与手写版(pipeline.py)的语义对照：
+  1. 试探转换: try float/except跳过  ↔  to_numeric(errors="coerce")
+  2. 清洗:     跳行有打印报告       ↔  dropna 静默清扫（透明性靠 report 补）
+  3. 空值判断: strip+判空(逐行)     ↔  str.strip() + 布尔掩码过滤(整列)
+     ⚠️ 实测坑：dropna 只认 NaN，" "(空格串)能存活——空城市组事故 2026-09-28
+  4. 行序:     首次出现             ↔  groupby(sort=False)
+  5. 计数类型: int                  ↔  agg 后 count 可能被上浮成 float，出口 astype(int)
+
+性能（10 万行脏数据, million_orders.csv, 2026-09-28, 本机）:
+  pandas 版:  0.081 s
+  手写版:     0.171 s
+  代码行数:   pandas 46 行 / 手写 70 行
+"""
+
 from dataclasses import dataclass
 import pandas as pd
 
@@ -24,14 +41,25 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
         print("错误：文件为空或只有表头")
         return pd.DataFrame()  
 
+    original_rows = df.shape[0]
 
     df[metric_col] = pd.to_numeric(df[metric_col], errors="coerce")
 
+    df[group_col] = df[group_col].str.strip()          # 剥首尾空白（向量化 strip）
+    df = df[df[group_col] != ""]                        # 空串过滤（又是布尔掩码）
+
     df = df.dropna()
+    final_rows = df.shape[0]
+    skipped_rows = original_rows - final_rows
+
+    print(f'原始行数：{original_rows}\n清洗后行数：{final_rows}\n跳过行数：{skipped_rows}')
+
+    
 
     return df
 
 def report_pd(df: pd.DataFrame) -> None:
+    df.to_parquet("report.parquet")
     for group, row in df.iterrows():
         print(f"{group} 数量={row['count']:.0f} 均值={row['mean']:.1f}")
 
