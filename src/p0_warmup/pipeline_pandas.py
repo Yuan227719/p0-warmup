@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import pandas as pd
 
 
-def aggregate(df:pd.DataFrame,group_col:str,metric_col:str) -> pd.DataFrame:
+def agg_pd(df:pd.DataFrame,group_col:str,metric_col:str) -> pd.DataFrame:
     # GroupStats: dict[str, float]
     try:
         df = df.groupby(group_col,sort=False)[metric_col].agg(['sum','count','mean']).round(1)
@@ -12,7 +12,7 @@ def aggregate(df:pd.DataFrame,group_col:str,metric_col:str) -> pd.DataFrame:
 
     return df
 
-def load_rows(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
+def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
 
     try:
         df = pd.read_csv(path)
@@ -31,7 +31,7 @@ def load_rows(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
 
     return df
 
-def report(df: pd.DataFrame) -> None:
+def report_pd(df: pd.DataFrame) -> None:
     for group, row in df.iterrows():
         print(f"{group} 数量={row['count']:.0f} 均值={row['mean']:.1f}")
 
