@@ -17,15 +17,14 @@ pipeline_pandas —— 手写管道的 pandas 平行实现（双跑对照版）
 
 from dataclasses import dataclass
 import pandas as pd
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 def agg_pd(df:pd.DataFrame,group_col:str,metric_col:str) -> pd.DataFrame:
     # GroupStats: dict[str, float]
-    try:
-        df = df.groupby(group_col,sort=False)[metric_col].agg(['sum','count','mean']).round(1)
-    except ValueError:
-        print(f"错误：列 {group_col} 不存在，可用列：{df.columns}")
-        return pd.DataFrame()  
+    df = df.groupby(group_col,sort=False)[metric_col].agg(['sum','count','mean']).round(1)
 
     return df
 
@@ -34,12 +33,18 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
     try:
         df = pd.read_csv(path)
     except FileNotFoundError:
-        print(f"错误：文件不存在 {path}")
+        logger.warning(f"错误：文件不存在 {path}")
+        # print(f"错误：文件不存在 {path}")
         return pd.DataFrame()  
 
     if df.shape[0] < 2:
-        print("错误：文件为空或只有表头")
+        logger.warning(f"错误：文件为空或只有表头")
+        # print("错误：文件为空或只有表头")
         return pd.DataFrame()  
+
+    if group_col not in df.columns:
+        logger.warning(f"错误：列 {group_col} 不存在，可用列：{df.columns}")
+        return pd.DataFrame()
 
     original_rows = df.shape[0]
 
@@ -52,7 +57,8 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
     final_rows = df.shape[0]
     skipped_rows = original_rows - final_rows
 
-    print(f'原始行数：{original_rows}\n清洗后行数：{final_rows}\n跳过行数：{skipped_rows}')
+    logger.debug(f'原始行数：{original_rows} 清洗后行数：{final_rows} 跳过行数：{skipped_rows}')
+    # print(f'原始行数：{original_rows}\n清洗后行数：{final_rows}\n跳过行数：{skipped_rows}')
 
     
 

@@ -1,0 +1,19 @@
+2026-09-29 22:41:42,746 - __main__ - INFO - 程序启动
+2026-09-29 22:45:02,724 - root - INFO - 程序启动
+2026-09-29 22:45:02,792 - p0_warmup.pipeline_pandas - DEBUG - 原始行数：100000
+清洗后行数：59925
+跳过行数：40075
+2026-09-29 22:48:28,036 - root - INFO - 程序启动
+2026-09-29 23:01:25,509 - root - INFO - 程序启动
+2026-09-29 23:01:25,549 - p0_warmup.pipeline_pandas - WARNING - 错误：列 foo 不存在，可用列：Index(['Unnamed: 0', 'city', 'amount'], dtype='str')
+2026-09-29 23:07:42,709 - root - INFO - 程序启动
+2026-09-29 23:07:42,749 - p0_warmup.pipeline_pandas - WARNING - 错误：列 foo 不存在，可用列：Index(['Unnamed: 0', 'city', 'amount'], dtype='str')
+2026-09-29 23:08:03,013 - root - INFO - 程序启动
+2026-09-29 23:08:03,051 - p0_warmup.pipeline_pandas - WARNING - 错误：列 foo 不存在，可用列：Index(['Unnamed: 0', 'city', 'amount'], dtype='str')
+2026-09-29 23:10:15,128 - root - INFO - 程序启动
+2026-09-29 23:10:15,171 - p0_warmup.pipeline_pandas - WARNING - 错误：列 foo 不存在，可用列：Index(['city', 'amount'], dtype='str')
+2026-09-29 23:10:34,190 - root - INFO - 程序启动
+2026-09-29 23:10:34,191 - p0_warmup.pipeline_pandas - WARNING - 错误：文件不存在 nope.csv
+2026-09-29 23:11:37,620 - root - INFO - 程序启动
+2026-09-29 23:11:37,679 - p0_warmup.pipeline_pandas - DEBUG - 原始行数：100000 清洗后行数：60113 跳过行数：39887
+2026-09-29 23:11:37,701 - root - INFO - 0.08067091694101691
