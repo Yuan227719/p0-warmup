@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 .DS_Store
 复盘*.md
+debug.log
+*.log
