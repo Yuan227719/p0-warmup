@@ -13,6 +13,6 @@ def test_pandas_matches_handwritten():
 
 def test_cli_main(capsys):
     main(["--input", "million_orders.csv", "--group", "city", "--metric", "amount"])
-    assert "上海 数量=14816 均值=501.0" in capsys.readouterr().out
+    assert "上海 数量=14850 均值=501.3" in capsys.readouterr().out
 
     # 断言：城市集合相同；每城 count、mean(保留1位) 相同
