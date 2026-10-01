@@ -20,6 +20,12 @@ import pandas as pd
 import logging
 
 
+class PipelineError(Exception):...        # 基类：管道类错误的总姓
+class FileMissingError(PipelineError):...
+class EmptyFileError(PipelineError):...
+class ColumnNotFoundError(PipelineError):...
+
+
 logger = logging.getLogger(__name__)
 
 def agg_pd(df:pd.DataFrame,group_col:str,metric_col:str) -> pd.DataFrame:
@@ -33,18 +39,25 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
     try:
         df = pd.read_csv(path)
     except FileNotFoundError:
-        logger.warning(f"错误：文件不存在 {path}")
+        # logger.warning(f"错误：文件不存在 {path}")
+        raise FileMissingError(f"错误：文件不存在 {path}")
         # print(f"错误：文件不存在 {path}")
-        return pd.DataFrame()  
+        # return pd.DataFrame()  
 
     if df.shape[0] < 2:
-        logger.warning(f"错误：文件为空或只有表头")
+        # logger.warning(f"错误：文件为空或只有表头")
+        raise EmptyFileError(f"错误：文件为空或只有表头")
         # print("错误：文件为空或只有表头")
-        return pd.DataFrame()  
+        # return pd.DataFrame()  
 
     if group_col not in df.columns:
-        logger.warning(f"错误：列 {group_col} 不存在，可用列：{df.columns}")
-        return pd.DataFrame()
+        # logger.warning(f"错误：列 {group_col} 不存在，可用列：{df.columns}")
+        raise ColumnNotFoundError(f"错误：列 {group_col} 不存在，可用列：{list(df.columns)}")
+
+    if metric_col not in df.columns:
+        # logger.warning(f"错误：列 {metric_col} 不存在，可用列：{df.columns}")
+        raise ColumnNotFoundError(f"错误：列 {metric_col} 不存在，可用列：{list(df.columns)}")    
+        # return pd.DataFrame()
 
     original_rows = df.shape[0]
 

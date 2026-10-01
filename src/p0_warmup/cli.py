@@ -1,8 +1,10 @@
 import argparse
+from curses import echo
 import time
 import logging
+import sys
 from .pipeline import load_rows,aggregate,report
-from .pipeline_pandas import load_pd,agg_pd,report_pd
+from .pipeline_pandas import load_pd,agg_pd,report_pd,PipelineError,ColumnNotFoundError,FileMissingError,EmptyFileError
 
 
 logger = logging.getLogger()
@@ -38,15 +40,19 @@ def main(args=None):
 
     args = parser.parse_args(args)          # 解析命令行 → 得到 args 对象
     t0=time.perf_counter(); 
-    # df = load_rows(args.input, args.group, args.metric)
-    df1 = load_pd(args.input, args.group, args.metric)
-    if df1.empty:
-        return
-    # df = aggregate(df)
-    df1 = agg_pd(df1,args.group, args.metric)
-    # report(df)
-    report_pd(df1)
-    logger.info(time.perf_counter()-t0)
+    try:
+        # df = load_rows(args.input, args.group, args.metric)
+        df1 = load_pd(args.input, args.group, args.metric)
+        if df1.empty:
+            return
+        # df = aggregate(df)
+        df1 = agg_pd(df1,args.group, args.metric)
+        # report(df)
+        report_pd(df1)
+        logger.info(time.perf_counter()-t0)
+    except PipelineError as e:
+        logger.error(e)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
