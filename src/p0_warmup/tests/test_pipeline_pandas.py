@@ -32,7 +32,7 @@ def test_read_with_raises_bad_columns_fail(caplog):
 
 def test_read_with_raises_empty_file(caplog): 
     with pytest.raises(SystemExit) as exit_value:
-        print(main(["--input", "orders_ony_header.csv", "--group", "city", "--metric", "amount"]))
+        print(main(["--input", "orders_ony_header.csv", "--grp", "city", "--metric", "amount"]))
     assert exit_value.value.code == 1
     assert '错误：文件为空或只有表头' in caplog.text
 
