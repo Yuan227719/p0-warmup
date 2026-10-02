@@ -1,0 +1,14 @@
+src/p0_warmup/tests/test_pipeline_pandas.py
+  h_e2c8b9bc912929 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "d62604111f58d6b98c2ace0248e4b3cc74f1849c",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
