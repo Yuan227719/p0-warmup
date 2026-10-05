@@ -7,15 +7,15 @@ DATA_DIR = Path(__file__).resolve().parents[3] / "data"
 OUT_CSV  = DATA_DIR.parent / "combined_data" / "out.csv"
 
 def test_wrong_headers(caplog):
-    combine_operator(str(DATA_DIR),["city", "amount"])
+    combine_operator(str(DATA_DIR),["city", "amount"],output=str(OUT_CSV))
     assert "错误：当前文件表头不一致" in caplog.text
 
 def test_only_headers(caplog):
-    combine_operator(str(DATA_DIR),["city", "amount"])
+    combine_operator(str(DATA_DIR),["city", "amount"],output=str(OUT_CSV))
     assert "错误：文件为空或只有表头" in caplog.text    
 
 def test_columns_equal(caplog):
-    combine_operator(str(DATA_DIR),["city", "amount"])
+    combine_operator(str(DATA_DIR),["city", "amount"],output=str(OUT_CSV))
     assert "行数相等" in caplog.text
 
 

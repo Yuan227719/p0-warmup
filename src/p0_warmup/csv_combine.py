@@ -20,7 +20,7 @@ file_handler.setFormatter(formatter)
 # 添加处理器
 logger.addHandler(file_handler)
 
-def combine_operator(path:str,headers:list):
+def combine_operator(path:str,headers:list,output: str = "combined.csv"):
  
     all_files = glob.glob(os.path.join(path,"*.csv"))
     final_files = glob.glob(os.path.join(path,"*.csv"))
@@ -49,7 +49,7 @@ def combine_operator(path:str,headers:list):
     if total_count == combined_csv.shape[0]:
         logger.info(f"行数相等")
 
-    combined_csv.to_csv(r'/Users/chrisyuan/Documents/跳槽准备/python学习/p0-warmup/combined_data/combined_data.csv',index=False)
+    combined_csv.to_csv(output,index=False)
 
 if __name__ == '__main__':
     combine_operator(f"/Users/chrisyuan/Documents/跳槽准备/python学习/p0-warmup/data/",["city","amount"])
