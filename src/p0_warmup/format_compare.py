@@ -1,7 +1,8 @@
-import pandas as pd
-import numpy as np
 import os
 import time
+
+import numpy as np
+import pandas as pd
 
 df = pd.DataFrame({
     "city": np.random.choice(["北京","上海","深圳","杭州"], 100_000),

@@ -1,7 +1,9 @@
-from p0_warmup.pipeline import load_rows,aggregate,report
-from p0_warmup.pipeline_pandas import load_pd,agg_pd,report_pd,PipelineError
-from p0_warmup.cli import main
 import pytest
+
+from p0_warmup.cli import main
+from p0_warmup.pipeline import aggregate, load_rows, report
+from p0_warmup.pipeline_pandas import PipelineError, agg_pd, load_pd, report_pd
+
 
 def test_pandas_matches_handwritten():
     # 双跑对账：两套实现对同一输入必须给出相同答案

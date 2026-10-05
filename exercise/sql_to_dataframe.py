@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 df = pd.DataFrame([
     {"city": "北京", "amount": 100},
     {"city": "上海", "amount": 250},

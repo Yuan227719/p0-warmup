@@ -1,6 +1,12 @@
 import pytest
+
 # tests/test_pipeline.py
-from p0_warmup.pipeline import load_rows, aggregate, report     # ① 把被测函数当普通模块 import
+from p0_warmup.pipeline import (  # ① 把被测函数当普通模块 import
+    aggregate,
+    load_rows,
+    report,
+)
+
 
 def test_load_rows_normal():                             # ② 函数名必须以 test_ 开头
     rows = load_rows("orders.csv", "city", "amount")     # ③ 正常调用
@@ -27,12 +33,14 @@ def test_load_rows_dirty_skipped():  # 异常/脏：15 行进、10 行出
     assert len(load_rows("orders.csv", "city", "amount")) == 10
 
 def test_read_with_retry_raises_fail():   # 你昨天刚立的契约
-    from p0_warmup.read_with_retry import read_with_retry # read_with_retry 在 exercise/ 里，能 import 到就测；import 不到就挪个位置或复制函数——自己决定，注释里写理由
+    from p0_warmup.read_with_retry import (
+        read_with_retry,  # read_with_retry 在 exercise/ 里，能 import 到就测；import 不到就挪个位置或复制函数——自己决定，注释里写理由
+    )
     with pytest.raises(FileNotFoundError):
         print(read_with_retry("nope.csv", retries=1))    # retries=1，别让 sleep 拖慢测试
 
 def test_read_with_retry_raises_success():   # 你昨天刚立的契约
-    from p0_warmup.read_with_retry import read_with_retry 
+    from p0_warmup.read_with_retry import read_with_retry
     assert "city,amount" in read_with_retry("orders.csv", retries=1)    # retries=1，别让 sleep 拖慢测试
 
 def test_load_rows_empty_file():

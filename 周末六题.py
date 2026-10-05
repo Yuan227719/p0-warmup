@@ -21,7 +21,7 @@ print(rows_2)
 
 # 3. 统计 "apple banana apple cherry banana apple" 中每个单词出现次数（dict.get）
 str = "apple banana apple cherry banana apple"
-str_dict = dict()
+str_dict = {}
 
 for x in str.split(' '):
     str_dict[x] = str_dict.get(x,0)+1
@@ -37,7 +37,7 @@ print(people_age)
 
 
 # 5. 从 "2026-09-12.csv" 中取出扩展名 "csv"
-print('2026-09-12.csv'.split('.')[1])
+print(['2026-09-12', 'csv'][1])
 
 
 # 6. a, (b, c) = 1, (2, 3) 执行后 a、b、c 各是什么？写成注释

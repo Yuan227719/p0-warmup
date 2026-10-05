@@ -17,7 +17,7 @@ print("\a")
 
 
 
-print('_'.join(('ab', 'ra ca da bra')))
+print('ab_ra ca da bra')
 
 
 

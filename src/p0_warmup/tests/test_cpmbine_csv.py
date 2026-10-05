@@ -1,5 +1,6 @@
-from p0_warmup.csv_combine import combine_operator
 from pathlib import Path
+
+from p0_warmup.csv_combine import combine_operator
 
 # 锚点：从本文件出发往上走 4 级到仓库根，再进 data/
 # __file__ = .../src/p0_warmup/tests/test_cpmbine_csv.py

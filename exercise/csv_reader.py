@@ -8,9 +8,7 @@ def parse_line(line:str) -> list[str]:
     for value in line_list:
         if '\"' in value and value[0] == '\"' and value[-1] != '\"':
             tmp_value=value.strip('\"')
-        elif '\"' in value and value[-1] == '\"' and value[0] != '\"':
-            new_line.append(f"{tmp_value},{value.strip(quote)}")
-        elif '\"' in value and value[-1] == '\"' and value[0] == '\"':
+        elif '\"' in value and value[-1] == '\"' and value[0] != '\"' or '\"' in value and value[-1] == '\"' and value[0] == '\"':
             new_line.append(f"{tmp_value},{value.strip(quote)}")
         else:
             new_line.append(value)

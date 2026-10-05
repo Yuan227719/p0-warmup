@@ -15,9 +15,11 @@ pipeline_pandas —— 手写管道的 pandas 平行实现（双跑对照版）
   代码行数:   pandas 46 行 / 手写 70 行
 """
 
-import pandas as pd
 import logging
+
 import numpy as np
+import pandas as pd
+
 
 class PipelineError(Exception):...        # 基类：管道类错误的总姓
 class FileMissingError(PipelineError):...

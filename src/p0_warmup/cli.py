@@ -1,9 +1,9 @@
 import argparse
-import time
 import logging
 import sys
-from .pipeline_pandas import load_pd,agg_pd,report_pd,PipelineError
+import time
 
+from .pipeline_pandas import PipelineError, agg_pd, load_pd, report_pd
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
