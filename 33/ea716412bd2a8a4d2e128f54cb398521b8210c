@@ -1,0 +1,16 @@
+src/p0_warmup/csv_combine.py
+  h_e2c8b9bc912929 23,52
+src/p0_warmup/tests/test_cpmbine_csv.py
+  h_e2c8b9bc912929 10,14,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "33ea716412bd2a8a4d2e128f54cb398521b8210c",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
