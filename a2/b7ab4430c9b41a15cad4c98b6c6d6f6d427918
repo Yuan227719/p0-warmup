@@ -1,0 +1,14 @@
+.github/workflows/ci.yml
+  h_e2c8b9bc912929 14,17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "a2b7ab4430c9b41a15cad4c98b6c6d6f6d427918",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
