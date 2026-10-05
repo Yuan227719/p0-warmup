@@ -1,0 +1,20 @@
+src/p0_warmup/format_compare.py
+  h_e2c8b9bc912929 2-4,10
+src/p0_warmup/pipeline_pandas.py
+  h_e2c8b9bc912929 20,67-69,71
+exercise/csv_reader.py
+  h_e2c8b9bc912929 7,12,14
+.github/workflows/ci.yml
+  h_e2c8b9bc912929 14-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "5aba2d02f7203e5e70535affe1e79513924d38ac",
+  "prompts": {},
+  "humans": {
+    "h_e2c8b9bc912929": {
+      "author": "Yuan227719 <yuant2004@163.com>"
+    }
+  }
+}
