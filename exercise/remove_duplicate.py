@@ -15,9 +15,6 @@ for i in rows:
 print(no_duplicate_rows)
 print("\a")
 
-del rows
-
-print(rows) 
 
 
 print('_'.join(('ab', 'ra ca da bra')))

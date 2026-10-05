@@ -1,6 +1,4 @@
-from re import T
 import os
-from numpy import empty
 import pandas as pd
 import glob
 import logging
@@ -47,9 +45,9 @@ def combine_operator(path:str,headers:list,output: str = "combined.csv"):
     logger.info(f"合并后文件行数：{combined_csv.shape[0]}")
 
     if total_count == combined_csv.shape[0]:
-        logger.info(f"行数相等")
+        logger.info("行数相等")
 
     combined_csv.to_csv(output,index=False)
 
 if __name__ == '__main__':
-    combine_operator(f"/Users/chrisyuan/Documents/跳槽准备/python学习/p0-warmup/data/",["city","amount"])
+    combine_operator("/Users/chrisyuan/Documents/跳槽准备/python学习/p0-warmup/data/",["city","amount"])

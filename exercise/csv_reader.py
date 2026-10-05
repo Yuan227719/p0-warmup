@@ -4,13 +4,14 @@ def parse_line(line:str) -> list[str]:
 
     line_list = line.split(',')
     new_line=[]
+    quote = '"'
     for value in line_list:
         if '\"' in value and value[0] == '\"' and value[-1] != '\"':
             tmp_value=value.strip('\"')
         elif '\"' in value and value[-1] == '\"' and value[0] != '\"':
-            new_line.append(f"{tmp_value},{value.strip('\"')}")
+            new_line.append(f"{tmp_value},{value.strip(quote)}")
         elif '\"' in value and value[-1] == '\"' and value[0] == '\"':
-            new_line.append(value.strip('\"'))
+            new_line.append(f"{tmp_value},{value.strip(quote)}")
         else:
             new_line.append(value)
     return new_line

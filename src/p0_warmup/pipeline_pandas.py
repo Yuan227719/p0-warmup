@@ -15,10 +15,9 @@ pipeline_pandas —— 手写管道的 pandas 平行实现（双跑对照版）
   代码行数:   pandas 46 行 / 手写 70 行
 """
 
-from dataclasses import dataclass
 import pandas as pd
 import logging
-
+import numpy as np
 
 class PipelineError(Exception):...        # 基类：管道类错误的总姓
 class FileMissingError(PipelineError):...
@@ -46,7 +45,7 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
 
     if df.shape[0] < 2:
         # logger.warning(f"错误：文件为空或只有表头")
-        raise EmptyFileError(f"错误：文件为空或只有表头")
+        raise EmptyFileError("错误：文件为空或只有表头")
         # print("错误：文件为空或只有表头")
         # return pd.DataFrame()  
 
@@ -64,8 +63,12 @@ def load_pd(path:str,group_col:str,metric_col:str) -> pd.DataFrame:
     df[metric_col] = pd.to_numeric(df[metric_col], errors="coerce")
 
     df[group_col] = df[group_col].str.strip()          # 剥首尾空白（向量化 strip）
-    df = df[df[group_col] != ""]                        # 空串过滤（又是布尔掩码）
 
+    nan_ratio = df.replace("", np.nan).isna().mean()
+    logger.debug(f"空值率（清洗前）：{group_col} {nan_ratio[group_col]:.1%} | {metric_col} {nan_ratio[metric_col]:.1%}")
+    
+    df = df[df[group_col] != ""]                        # 空串过滤（又是布尔掩码）
+      
     df = df.dropna()
     final_rows = df.shape[0]
     skipped_rows = original_rows - final_rows

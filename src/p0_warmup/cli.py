@@ -1,10 +1,8 @@
 import argparse
-from curses import echo
 import time
 import logging
 import sys
-from .pipeline import load_rows,aggregate,report
-from .pipeline_pandas import load_pd,agg_pd,report_pd,PipelineError,ColumnNotFoundError,FileMissingError,EmptyFileError
+from .pipeline_pandas import load_pd,agg_pd,report_pd,PipelineError
 
 
 logger = logging.getLogger()
@@ -39,7 +37,7 @@ def main(args=None):
     parser.add_argument("--metric", default="amount", help="统计列名")
 
     args = parser.parse_args(args)          # 解析命令行 → 得到 args 对象
-    t0=time.perf_counter(); 
+    t0=time.perf_counter() 
     try:
         # df = load_rows(args.input, args.group, args.metric)
         df1 = load_pd(args.input, args.group, args.metric)
